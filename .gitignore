@@ -143,3 +143,5 @@ cython_debug/
 src/lesson_07
 
 .gitignore.swp
+
+src/lesson_08/class_work
