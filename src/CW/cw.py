@@ -1,84 +1,94 @@
-import random
-import sys
+class A:
+    def some_method(self):
+        print('I am A')
 
 
-def gen(a, b, diff):
-    while True:
-        yield random.randint(a, b)
-        a += diff
-        b += diff
+class B:
+    def some_method(self):
+        print('I am B')
 
 
-my_gen = gen(0, 0, 4)
-print(next(my_gen))
-print(next(my_gen))
-print(next(my_gen))
+class C(A, B):
+    def some_method(self):
+        super().some_method()
 
 
-def get_appendix(argv):
-    res = 0
-    for i in argv:
-        if i.isdigit():
-            res += int(i)
-    return res
+c = C()
+c.some_method()
 
 
-print(get_appendix(sys.argv))
+class Pet:
+    counter = 0
 
-print('+++++++++++++++++++++++++++')
+    def __init__(self):
+        Pet.counter += 1
+
+    def jump(self, meters):
+        print(f'jump {meters} meters')
+
+    def voice(self):
+        pass
 
 
-class MyIterator:
-    def __init__(self, n):
-        self.__n = n
-        self.__i = 0
-
-    def __next__(self):
-        if self.__i < self.__n:
-            result = self.__i ** 2
-            self.__i += 1
-            return result
+class Dog(Pet):
+    def jump(self, meters):
+        if meters > 0.5:
+            print('dog cannot jump more 0.5 meters')
         else:
-            raise StopIteration
+            super(Dog, self).jump(meters)
 
-    def __iter__(self):
-        return self
-
-
-def my_generator(n):
-    for i in range(n):
-        yield i ** 2
+    def voice(self):
+        print('Woof!')
 
 
-class MyGenerator:
-    def __init__(self, n):
-        self.__n = n
-        self.__i = 0
+class Cat(Pet):
+    def jump(self, meters):
+        if meters > 2:
+            print('cat cannot jump more 2 meters')
+        else:
+            super(Dog, self).jump(meters)
 
-    def generator(self):
-        for i in range(self.__n):
-            yield i ** 2
+    def voice(self):
+        print('Meow!')
 
 
-for i in my_generator(3):
-    print(i)
+dog = Dog()
+cat = Cat()
 
-print('----------------')
+dog.jump(23)
+dog.jump(0.1)
 
-for i in MyIterator(3):
-    print(i)
+cat.voice()
+dog.voice()
 
-print('----------------')
+print(dir(cat))
 
-for i in MyGenerator(3).generator():
-    print(i)
 
-print('----------------')
+class MyTime:
+    def __init__(self, hours=0, minutes=0, seconds=0):
+        self.hours = hours
+        self.minutes = minutes
+        self.seconds = seconds
 
-my_gen = my_generator(3)
+    def __ne__(self, other):
+        return (self.hours != other.hours) or (self.minutes != other.minutes) or (self.seconds != other.seconds)
 
-for i in my_gen:
-    print(i)
+    def __eq__(self, other):
+        return not self.__ne__(other)
 
-for i in my_gen:
-    print(i)
+    def __repr__(self):
+        return f'{self.hours} : {self.minutes} : {self.seconds}'
+
+
+t1 = MyTime(1, 3, 2)
+t2 = MyTime(1, 30, 2)
+
+t1 = t2
+
+str = int
+a = str('5')
+
+int = MyTime
+
+a = int(3, 4, 5)
+print(a)
