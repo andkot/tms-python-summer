@@ -1,0 +1,6 @@
+1. A django-project creating: django-admin startproject 'project_name'.
+2. An application creating: python3 manage.py startapp 'application_name'.
+3. Run server: python manage.py runserver.
+4. Migrations: python3 manage.py makemigrations.
+5. Migrate: python3 manage.py migrate.
+
