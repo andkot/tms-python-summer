@@ -3,4 +3,3 @@
 3. Run server: python manage.py runserver.
 4. Migrations: python3 manage.py makemigrations.
 5. Migrate: python3 manage.py migrate.
-
