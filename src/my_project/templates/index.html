@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body style="background: azure" >
+    {% for user in users %}
+    <h1>User: <a href="/users/{{user}}">{{user}}</a> </h1>
+    {% endfor %}
+</body>
+</html>

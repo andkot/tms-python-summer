@@ -18,7 +18,11 @@ from django.urls import path, include
 from my_project import views
 
 urlpatterns = [
+    path('', views.home),
     path('admin/', admin.site.urls),
     path('hello/', views.print_hello),
-    path('', include('blog.urls'))
+    path('', include('blog.urls')),
+
+    path('users/', views.get_users),
+    path('users/<username>', views.get_user),
 ]
