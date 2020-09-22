@@ -9,3 +9,6 @@ class Main(models.Model):
     def get_main_info(self):
         return self.main_info
 
+def say_hello(name: str) -> str:
+    return f'Hello {name}'
+
